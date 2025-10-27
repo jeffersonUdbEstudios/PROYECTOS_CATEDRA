@@ -17,6 +17,31 @@ cd frontend && npm install
 
 ### Paso 2: Configurar MySQL
 
+**Opción A - Docker Compose (Recomendado):**
+
+1. Ejecuta Docker Compose:
+```bash
+docker-compose up -d
+```
+
+Esto crea automáticamente:
+- Base de datos MySQL
+- Importa el esquema inicial
+- Incluye datos de prueba
+
+2. Configura el archivo `backend/.env`:
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=root
+DB_NAME=inventario_ferreteria
+PORT=5001
+NODE_ENV=development
+JWT_SECRET=gestor_inventario_secret_key_2024
+```
+
+**Opción B - MySQL Manual:**
+
 1. Crea la base de datos:
 ```sql
 CREATE DATABASE inventario_ferreteria;
@@ -27,20 +52,33 @@ CREATE DATABASE inventario_ferreteria;
 mysql -u root -p inventario_ferreteria < backend/database/schema.sql
 ```
 
-### Paso 3: Configurar variables de entorno
-
-Crea el archivo `backend/.env`:
+3. Configura el archivo `backend/.env`:
 ```
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=tu_contraseña_mysql
 DB_NAME=inventario_ferreteria
-PORT=5000
+PORT=5001
 NODE_ENV=development
 JWT_SECRET=gestor_inventario_secret_key_2024
 ```
 
-### Paso 4: Ejecutar la aplicación
+### Comandos Docker útiles:
+```bash
+# Iniciar MySQL
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Detener MySQL
+docker-compose down
+
+# Detener y eliminar datos
+docker-compose down -v
+```
+
+### Paso 3: Ejecutar la aplicación
 
 **Terminal 1 - Backend:**
 ```bash

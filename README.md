@@ -14,7 +14,7 @@ Sistema web para la gestión de inventario de una ferretería, desarrollado con 
 ## Requisitos
 
 - Node.js (v14 o superior)
-- MySQL (v5.7 o superior)
+- MySQL (v5.7 o superior) o Docker
 - npm
 
 ## Instalación
@@ -32,19 +32,28 @@ npm install
 ```
 
 3. Configurar MySQL:
-   - Crear base de datos: `inventario_ferreteria`
-   - Importar el esquema: `backend/database/schema.sql`
-   - Configurar credenciales en `backend/.env`
+
+   **Opción A - Docker (Recomendado):**
+   ```bash
+   docker-compose up -d
+   ```
+   Esto crea la base de datos e importa el esquema automáticamente.
+
+   **Opción B - MySQL Manual:**
+   ```bash
+   mysql -u root -p -e "CREATE DATABASE inventario_ferreteria;"
+   mysql -u root -p inventario_ferreteria < backend/database/schema.sql
+   ```
 
 4. Crear archivo `backend/.env`:
 ```
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=tu_contraseña
+DB_PASSWORD=root
 DB_NAME=inventario_ferreteria
-PORT=5000
+PORT=5001
 NODE_ENV=development
-JWT_SECRET=tu_secret_key
+JWT_SECRET=gestor_inventario_secret_key_2024
 ```
 
 ## Ejecución
