@@ -1,4 +1,4 @@
-# Gestor de Inventario Web para Ferretería
+#Gestor de Inventario Web para Ferretería
 
 Sistema web para la gestión de inventario de una ferretería, desarrollado con React (Frontend) y Express + MySQL (Backend).
 
